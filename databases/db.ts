@@ -5,7 +5,7 @@ const db = new Database("blogDB.sqlite")
 export function setupDatabase() {
   db.exec("PRAGMA foreign_keys = ON;")
 
-  db.exec(`CREATE TABLE IF NOT EXISTS catagories(
+  db.exec(`CREATE TABLE IF NOT EXISTS categories(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title VARCHAR(255) NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -25,7 +25,7 @@ export function setupDatabase() {
 
   db.exec(`CREATE TABLE IF NOT EXISTS blogs(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        categoryId INTEGER NOT NULL REFERENCES catagories(id),
+        categoryId INTEGER NOT NULL REFERENCES categories(id),
         userId INTEGER NOT NULL REFERENCES users(id),
         title VARCHAR(255) NOT NULL,
         imageUrl VARCHAR(255) NOT NULL,
