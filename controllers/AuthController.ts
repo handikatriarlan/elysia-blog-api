@@ -226,7 +226,7 @@ class AuthController {
               const registerUser = UserModel.updateOrCreate(
                 body.name,
                 body.email,
-                false,
+                true,
                 undefined,
                 password
               ) as User
